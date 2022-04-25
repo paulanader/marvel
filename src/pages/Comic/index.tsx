@@ -6,15 +6,14 @@ import { Footer } from "../../components/Footer";
 import { Header } from "../../components/Header";
 import { Main } from "../../components/Main";
 import { Container } from "../../components/Container";
-import { PageTitle } from "../../components/PageTitle";
 import { LoadingGate } from "../../components/LoadingGate";
 
 import { Api } from "../../services/Api";
 import LoadingContent from "../../components/LoadingContent";
-import { getThumbnail } from "../../uteis/data";
 import { Breadcrumb } from "../../components/Breadcrumb";
 import { ComicType } from "../../@types/ComicType";
 import { Wrapper } from "../../components/Wrapper";
+import Informations from "../../components/Informations";
 
 export const Comic: React.FC = () => {
   const [isLoading, setLoading] = useState(true);
@@ -60,52 +59,7 @@ export const Comic: React.FC = () => {
             waitFor={isLoading === false}
             meanWhile={<LoadingContent />}
           >
-            {comic && (
-              <div className="row row-cols-1 row-cols-sm-2 g-5">
-                <div className="col-5">
-                  <img
-                    className="img-fluid"
-                    src={getThumbnail(comic.thumbnail)}
-                    alt={comic?.title}
-                  />
-                </div>
-                <div className="col text-white">
-                  <div className="mb-3">
-                    <PageTitle title={comic?.title ?? "Loading..."} />
-                  </div>
-                  {comic.description && (
-                    <div className="mb-3">
-                      <span className="fw-bold">Description:</span>
-                      <span>{comic.description}</span>
-                    </div>
-                  )}
-                  {comic.modified && (
-                    <div className="mb-3">
-                      <span className="fw-bold me-1">Modified:</span>
-                      <span>{comic.modified}</span>
-                    </div>
-                  )}
-                  {comic.title && (
-                    <div className="mb-3">
-                      <span className="fw-bold me-1">Title:</span>
-                      <span>{comic.title}</span>
-                    </div>
-                  )}
-                  {comic.variantDescription && (
-                    <div className="mb-3">
-                      <span className="fw-bold me-1">Variant Description:</span>
-                      <span>{comic.variantDescription}</span>
-                    </div>
-                  )}
-                  {comic.diamondCode && (
-                    <div className="mb-3">
-                      <span className="fw-bold me-1">Diamond Code:</span>
-                      <span>{comic.diamondCode}</span>
-                    </div>
-                  )}
-                </div>
-              </div>
-            )}
+            {comic && <Informations info={comic} />}
           </LoadingGate>
         </Container>
       </Main>

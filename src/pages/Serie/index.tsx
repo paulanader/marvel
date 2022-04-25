@@ -6,15 +6,14 @@ import { Footer } from "../../components/Footer";
 import { Header } from "../../components/Header";
 import { Main } from "../../components/Main";
 import { Container } from "../../components/Container";
-import { PageTitle } from "../../components/PageTitle";
 import { LoadingGate } from "../../components/LoadingGate";
 
 import { Api } from "../../services/Api";
 import LoadingContent from "../../components/LoadingContent";
-import { getThumbnail } from "../../uteis/data";
 import { Breadcrumb } from "../../components/Breadcrumb";
 import { SerieType } from "../../@types/SerieType";
 import { Wrapper } from "../../components/Wrapper";
+import Informations from "../../components/Informations";
 
 export const Serie: React.FC = () => {
   const [isLoading, setLoading] = useState(true);
@@ -60,40 +59,7 @@ export const Serie: React.FC = () => {
             waitFor={isLoading === false}
             meanWhile={<LoadingContent />}
           >
-            {serie && (
-              <div className="row row-cols-1 row-cols-sm-2 g-5">
-                <div className="col-5">
-                  <img
-                    className="img-fluid"
-                    src={getThumbnail(serie.thumbnail)}
-                    alt={serie?.title}
-                  />
-                </div>
-                <div className="col text-white">
-                  <div className="mb-3">
-                    <PageTitle title={serie?.title ?? "Loading..."} />
-                  </div>
-                  {serie.description && (
-                    <div className="mb-3">
-                      <span className="fw-bold me-1">Description:</span>
-                      <span>{serie.description}</span>
-                    </div>
-                  )}
-                  {serie.modified && (
-                    <div className="mb-3">
-                      <span className="fw-bold me-1">Modified:</span>
-                      <span>{serie.modified}</span>
-                    </div>
-                  )}
-                  {serie.title && (
-                    <div className="mb-3">
-                      <span className="fw-bold me-1">Title:</span>
-                      <span>{serie.title}</span>
-                    </div>
-                  )}
-                </div>
-              </div>
-            )}
+            {serie && <Informations info={serie} />}
           </LoadingGate>
         </Container>
       </Main>

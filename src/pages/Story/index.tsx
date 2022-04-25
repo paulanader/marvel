@@ -6,16 +6,14 @@ import { Footer } from "../../components/Footer";
 import { Header } from "../../components/Header";
 import { Main } from "../../components/Main";
 import { Container } from "../../components/Container";
-import { PageTitle } from "../../components/PageTitle";
 import { LoadingGate } from "../../components/LoadingGate";
 
 import { Api } from "../../services/Api";
 import LoadingContent from "../../components/LoadingContent";
 import { Breadcrumb } from "../../components/Breadcrumb";
 import { StoryType } from "../../@types/StoryType";
-
-import marvelstories from "../../assets/marvelstories.png";
 import { Wrapper } from "../../components/Wrapper";
+import Informations from "../../components/Informations";
 
 export const Story: React.FC = () => {
   const [isLoading, setLoading] = useState(true);
@@ -61,40 +59,7 @@ export const Story: React.FC = () => {
             waitFor={isLoading === false}
             meanWhile={<LoadingContent />}
           >
-            {story && (
-              <div className="row row-cols-1 row-cols-sm-2 g-5">
-                <div className="col-5">
-                  <img
-                    className="img-fluid"
-                    src={marvelstories}
-                    alt={story?.title}
-                  />
-                </div>
-                <div className="col text-white">
-                  <div className="mb-3">
-                    <PageTitle title={story?.title ?? "Loading..."} />
-                  </div>
-                  {story.description && (
-                    <div className="mb-3">
-                      <span className="fw-bold me-1">Description:</span>
-                      <span>{story.description}</span>
-                    </div>
-                  )}
-                  {story.modified && (
-                    <div className="mb-3">
-                      <span className="fw-bold me-1">Modified:</span>
-                      <span>{story.modified}</span>
-                    </div>
-                  )}
-                  {story.title && (
-                    <div className="mb-3">
-                      <span className="fw-bold me-1">Title:</span>
-                      <span>{story.title}</span>
-                    </div>
-                  )}
-                </div>
-              </div>
-            )}
+            {story && <Informations info={story} />}
           </LoadingGate>
         </Container>
       </Main>

@@ -6,15 +6,14 @@ import { Footer } from "../../components/Footer";
 import { Header } from "../../components/Header";
 import { Main } from "../../components/Main";
 import { Container } from "../../components/Container";
-import { PageTitle } from "../../components/PageTitle";
 import { LoadingGate } from "../../components/LoadingGate";
 
 import { Api } from "../../services/Api";
 import LoadingContent from "../../components/LoadingContent";
-import { getThumbnail } from "../../uteis/data";
 import { Breadcrumb } from "../../components/Breadcrumb";
 import { CreatorType } from "../../@types/CreatorType";
 import { Wrapper } from "../../components/Wrapper";
+import Informations from "../../components/Informations";
 
 export const Creator: React.FC = () => {
   const [isLoading, setLoading] = useState(true);
@@ -60,40 +59,7 @@ export const Creator: React.FC = () => {
             waitFor={isLoading === false}
             meanWhile={<LoadingContent />}
           >
-            {creator && (
-              <div className="row row-cols-1 row-cols-sm-2 g-5">
-                <div className="col-5">
-                  <img
-                    className="img-fluid"
-                    src={getThumbnail(creator.thumbnail)}
-                    alt={creator?.fullName}
-                  />
-                </div>
-                <div className="col text-white">
-                  <div className="mb-3">
-                    <PageTitle title={creator?.fullName ?? "Loading..."} />
-                  </div>
-                </div>
-                {creator.description && (
-                  <div className="mb-3">
-                    <span className="me-1 fw-bold">Description:</span>
-                    <span>{creator.description}</span>
-                  </div>
-                )}
-                {creator.modified && (
-                  <div className="mb-3">
-                    <span className="me-1 fw-bold">Modified:</span>
-                    <span>{creator.modified}</span>
-                  </div>
-                )}
-                {creator.fullName && (
-                  <div className="mb-3">
-                    <span className="me-1 fw-bold">FullName:</span>
-                    <span>{creator.fullName}</span>
-                  </div>
-                )}
-              </div>
-            )}
+            {creator && <Informations info={creator} />}
           </LoadingGate>
         </Container>
       </Main>
