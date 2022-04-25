@@ -47,14 +47,11 @@ export const Event: React.FC = () => {
       <Main>
         <Container>
           <Breadcrumb
+            page={`${event?.title}`}
             data={[
               {
                 title: "Events",
                 backTo: "/events",
-              },
-              {
-                title: `${event?.title}`,
-                backTo: "/events/:id",
               },
             ]}
           />

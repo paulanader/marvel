@@ -48,14 +48,11 @@ export const Comic: React.FC = () => {
       <Main>
         <Container>
           <Breadcrumb
+            page={`${comic?.title}`}
             data={[
               {
                 title: "Comics",
                 backTo: "/comics",
-              },
-              {
-                title: `${comic?.title}`,
-                backTo: "/comics/:id",
               },
             ]}
           />

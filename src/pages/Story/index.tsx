@@ -49,14 +49,11 @@ export const Story: React.FC = () => {
       <Main>
         <Container>
           <Breadcrumb
+            page={`${story?.title}`}
             data={[
               {
                 title: "Stories",
                 backTo: "/stories",
-              },
-              {
-                title: `${story?.title}`,
-                backTo: "/stories/:id",
               },
             ]}
           />

@@ -74,14 +74,7 @@ export const Series: React.FC = () => {
       <Menu />
       <Main>
         <Container>
-          <Breadcrumb
-            data={[
-              {
-                title: "Series",
-                backTo: "/series",
-              },
-            ]}
-          />
+          <Breadcrumb page="Series" />
           <div className="row row-cols-1 row-cols-sm-2 align-items-center justify-content-between">
             <div className="col">
               <PageTitle title="Series" />

@@ -48,14 +48,11 @@ export const Creator: React.FC = () => {
       <Main>
         <Container>
           <Breadcrumb
+            page={`${creator?.fullName}`}
             data={[
               {
                 title: "Creators",
                 backTo: "/creators",
-              },
-              {
-                title: `${creator?.fullName}`,
-                backTo: "/creators/:id",
               },
             ]}
           />
