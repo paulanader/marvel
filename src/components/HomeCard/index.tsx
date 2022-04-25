@@ -11,11 +11,15 @@ import { Link } from "react-router-dom";
 export function HomeCard() {
   return (
     <Base>
-      <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4 mb-5 p-3 w-100">
+      <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 mb-5 w-100">
         <div className="col d-flex">
-          <div className="card align-self-stretch">
+          <div className="card align-self-stretch w-100">
             <Link to="/characters">
-              <img className="card-img-top" src={caracterImg} alt="Imagem" />
+              <img
+                className="card-img-top w-100"
+                src={caracterImg}
+                alt="Imagem"
+              />
             </Link>
             <div className="card-body d-flex">
               <h5 className="card-title mt-auto mb-0">
