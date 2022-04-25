@@ -1,21 +1,11 @@
-import { Link } from "react-router-dom";
 import { Contant } from "./styles";
 
 interface IPageTitleProps {
   title: string;
-  backTo?: string;
 }
 
-export const PageTitle: React.FC<IPageTitleProps> = ({
-  title,
-  backTo = "/",
-}) => (
+export const PageTitle: React.FC<IPageTitleProps> = ({ title }) => (
   <Contant className="d-flex align-item-center mb-1">
-    <Link
-      className="fs-3 text-white me-2 d-flex align-items-center"
-      to={backTo}
-    >
-      <h1 className="fs-3 fw-light text-white m-0">{title}</h1>
-    </Link>
+    <h2 className="fs-3 text-white me-2 d-flex align-items-center">{title}</h2>
   </Contant>
 );
