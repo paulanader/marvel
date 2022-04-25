@@ -15,6 +15,7 @@ import Pagination from "../../components/Pagination";
 import { Breadcrumb } from "../../components/Breadcrumb";
 import { CreatorType } from "../../@types/CreatorType";
 import { CreatorCard } from "../../components/CreatorCard";
+import { Wrapper } from "../../components/Wrapper";
 
 export const Creators: React.FC = () => {
   const [isLoading, setLoading] = useState(true);
@@ -52,8 +53,6 @@ export const Creators: React.FC = () => {
       })
       .finally(() => {
         setLoading(false);
-        setinputName(searchName);
-        setinputName("");
       });
   };
 
@@ -64,12 +63,14 @@ export const Creators: React.FC = () => {
   const handleSearchByKeyPress = (
     event: React.KeyboardEvent<HTMLInputElement>
   ) =>
-    [event.code, event.key].includes("Enter") ? getCreators(searchPage) : null;
+    [event.code, event.key].includes("Enter")
+      ? getCreators(1, inputName)
+      : null;
   const handleChangePageInput = (event: React.ChangeEvent<HTMLInputElement>) =>
     setSearchPage(parseInt(event.target.value, 10));
 
   return (
-    <>
+    <Wrapper>
       <Header />
       <Menu />
       <Main>
@@ -156,6 +157,6 @@ export const Creators: React.FC = () => {
         </Container>
       </Main>
       <Footer />
-    </>
+    </Wrapper>
   );
 };

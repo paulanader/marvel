@@ -46,15 +46,12 @@ export const Comics: React.FC = () => {
               (response.data?.data?.limit ?? 1)
           )
         );
-        setinputName(response.data?.data?.results?.title);
       })
       .catch(() => {
         setPageCount(0);
       })
       .finally(() => {
         setLoading(false);
-        setinputName(searchName);
-        setinputName("");
       });
   };
 
@@ -65,7 +62,7 @@ export const Comics: React.FC = () => {
   const handleSearchByKeyPress = (
     event: React.KeyboardEvent<HTMLInputElement>
   ) =>
-    [event.code, event.key].includes("Enter") ? getComics(searchPage) : null;
+    [event.code, event.key].includes("Enter") ? getComics(1, inputName) : null;
   const handleChangePageInput = (event: React.ChangeEvent<HTMLInputElement>) =>
     setSearchPage(parseInt(event.target.value, 10));
 

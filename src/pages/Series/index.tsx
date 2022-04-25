@@ -45,15 +45,12 @@ export const Series: React.FC = () => {
               (response.data?.data?.limit ?? 1)
           )
         );
-        setinputName(response.data?.data?.results?.title);
       })
       .catch(() => {
         setPageCount(0);
       })
       .finally(() => {
         setLoading(false);
-        setinputName(searchName);
-        setinputName("");
       });
   };
 
@@ -64,7 +61,7 @@ export const Series: React.FC = () => {
   const handleSearchByKeyPress = (
     event: React.KeyboardEvent<HTMLInputElement>
   ) =>
-    [event.code, event.key].includes("Enter") ? getSeries(searchPage) : null;
+    [event.code, event.key].includes("Enter") ? getSeries(1, inputName) : null;
   const handleChangePageInput = (event: React.ChangeEvent<HTMLInputElement>) =>
     setSearchPage(parseInt(event.target.value, 10));
 
