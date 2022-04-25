@@ -82,9 +82,11 @@ export const Creators: React.FC = () => {
               },
             ]}
           />
-          <PageTitle title="Creators" />
-          <div className="row justify-content-end">
-            <div className="col-4 py-4">
+          <div className="row row-cols-1 row-cols-sm-2 align-items-center justify-content-between">
+            <div className="col">
+              <PageTitle title="Creators" />
+            </div>
+            <div className="col py-4">
               <div className="input-group">
                 <input
                   className="form-control"
@@ -109,7 +111,7 @@ export const Creators: React.FC = () => {
             waitFor={isLoading === false}
             meanWhile={<LoadingCards show numberOfCards={4} />}
           >
-            <div className="row row-cols-4 g-4 mb-5">
+            <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4 mb-5">
               {creators.map((creator) => (
                 <div key={creator.fullName} className="col d-flex">
                   <CreatorCard

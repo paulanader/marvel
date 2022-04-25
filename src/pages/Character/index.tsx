@@ -14,6 +14,7 @@ import { CharacterType } from "../../@types/CharacterType";
 import LoadingContent from "../../components/LoadingContent";
 import { getThumbnail } from "../../uteis/data";
 import { Breadcrumb } from "../../components/Breadcrumb";
+import { Wrapper } from "../../components/Wrapper";
 
 export const Character: React.FC = () => {
   const [isLoading, setLoading] = useState(true);
@@ -41,7 +42,7 @@ export const Character: React.FC = () => {
   }, []);
 
   return (
-    <>
+    <Wrapper>
       <Header />
       <Menu />
       <Main>
@@ -63,7 +64,7 @@ export const Character: React.FC = () => {
             meanWhile={<LoadingContent />}
           >
             {character && (
-              <div className="row g-5">
+              <div className="row row-cols-1 row-cols-sm-2 g-5">
                 <div className="col-5">
                   <img
                     className="img-fluid"
@@ -71,9 +72,34 @@ export const Character: React.FC = () => {
                     alt={character?.name}
                   />
                 </div>
-                <div className="col">
-                  <PageTitle title={character?.name ?? "Loading..."} />
-                  <p>Description: {character.description}</p>
+                <div className="col text-white">
+                  <div className="mb-3">
+                    <PageTitle title={character?.name ?? "Loading..."} />
+                  </div>
+                  {character.description && (
+                    <div className="mb-3">
+                      <span className="fw-bold me-1">Description:</span>
+                      <span>{character.description}</span>
+                    </div>
+                  )}
+                  {character.modified && (
+                    <div className="mb-3">
+                      <span className="fw-bold me-1">Modified:</span>
+                      <span>{character.modified}</span>
+                    </div>
+                  )}
+                  {character.title && (
+                    <div className="mb-3">
+                      <span className="fw-bold me-1">title:</span>
+                      <span>{character.title}</span>
+                    </div>
+                  )}
+                  {character.variantDescription && (
+                    <div className="mb-3">
+                      <span className="fw-bold me-1">variantDescription:</span>
+                      <span>{character.variantDescription}</span>
+                    </div>
+                  )}
                 </div>
               </div>
             )}
@@ -81,6 +107,6 @@ export const Character: React.FC = () => {
         </Container>
       </Main>
       <Footer />
-    </>
+    </Wrapper>
   );
 };

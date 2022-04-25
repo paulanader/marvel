@@ -1,10 +1,12 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
-export const Container = styled.header`
-    background: var(--black);
-   
+export const Container = styled.div`
+  background: var(--black);
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 0 1rem;
 `;
 
 export const Logo = styled.img`
-    max-width: 150px;
+  max-width: 150px;
 `;

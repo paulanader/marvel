@@ -14,6 +14,7 @@ import LoadingContent from "../../components/LoadingContent";
 import { getThumbnail } from "../../uteis/data";
 import { Breadcrumb } from "../../components/Breadcrumb";
 import { CreatorType } from "../../@types/CreatorType";
+import { Wrapper } from "../../components/Wrapper";
 
 export const Creator: React.FC = () => {
   const [isLoading, setLoading] = useState(true);
@@ -41,7 +42,7 @@ export const Creator: React.FC = () => {
   }, []);
 
   return (
-    <>
+    <Wrapper>
       <Header />
       <Menu />
       <Main>
@@ -63,7 +64,7 @@ export const Creator: React.FC = () => {
             meanWhile={<LoadingContent />}
           >
             {creator && (
-              <div className="row g-5">
+              <div className="row row-cols-1 row-cols-sm-2 g-5">
                 <div className="col-5">
                   <img
                     className="img-fluid"
@@ -71,15 +72,35 @@ export const Creator: React.FC = () => {
                     alt={creator?.fullName}
                   />
                 </div>
-                <div className="col">
-                  <PageTitle title={creator?.fullName ?? "Loading..."} />
+                <div className="col text-white">
+                  <div className="mb-3">
+                    <PageTitle title={creator?.fullName ?? "Loading..."} />
+                  </div>
                 </div>
+                {creator.description && (
+                  <div className="mb-3">
+                    <span className="me-1 fw-bold">Description:</span>
+                    <span>{creator.description}</span>
+                  </div>
+                )}
+                {creator.modified && (
+                  <div className="mb-3">
+                    <span className="me-1 fw-bold">Modified:</span>
+                    <span>{creator.modified}</span>
+                  </div>
+                )}
+                {creator.fullName && (
+                  <div className="mb-3">
+                    <span className="me-1 fw-bold">FullName:</span>
+                    <span>{creator.fullName}</span>
+                  </div>
+                )}
               </div>
             )}
           </LoadingGate>
         </Container>
       </Main>
       <Footer />
-    </>
+    </Wrapper>
   );
 };

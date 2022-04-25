@@ -14,6 +14,7 @@ import LoadingContent from "../../components/LoadingContent";
 import { getThumbnail } from "../../uteis/data";
 import { Breadcrumb } from "../../components/Breadcrumb";
 import { SerieType } from "../../@types/SerieType";
+import { Wrapper } from "../../components/Wrapper";
 
 export const Serie: React.FC = () => {
   const [isLoading, setLoading] = useState(true);
@@ -41,7 +42,7 @@ export const Serie: React.FC = () => {
   }, []);
 
   return (
-    <>
+    <Wrapper>
       <Header />
       <Menu />
       <Main>
@@ -63,7 +64,7 @@ export const Serie: React.FC = () => {
             meanWhile={<LoadingContent />}
           >
             {serie && (
-              <div className="row g-5">
+              <div className="row row-cols-1 row-cols-sm-2 g-5">
                 <div className="col-5">
                   <img
                     className="img-fluid"
@@ -71,9 +72,28 @@ export const Serie: React.FC = () => {
                     alt={serie?.title}
                   />
                 </div>
-                <div className="col">
-                  <PageTitle title={serie?.title ?? "Loading..."} />
-                  <p>Description: {serie.description}</p>
+                <div className="col text-white">
+                  <div className="mb-3">
+                    <PageTitle title={serie?.title ?? "Loading..."} />
+                  </div>
+                  {serie.description && (
+                    <div className="mb-3">
+                      <span className="fw-bold me-1">Description:</span>
+                      <span>{serie.description}</span>
+                    </div>
+                  )}
+                  {serie.modified && (
+                    <div className="mb-3">
+                      <span className="fw-bold me-1">Modified:</span>
+                      <span>{serie.modified}</span>
+                    </div>
+                  )}
+                  {serie.title && (
+                    <div className="mb-3">
+                      <span className="fw-bold me-1">Title:</span>
+                      <span>{serie.title}</span>
+                    </div>
+                  )}
                 </div>
               </div>
             )}
@@ -81,6 +101,6 @@ export const Serie: React.FC = () => {
         </Container>
       </Main>
       <Footer />
-    </>
+    </Wrapper>
   );
 };

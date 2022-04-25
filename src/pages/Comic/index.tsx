@@ -14,6 +14,7 @@ import LoadingContent from "../../components/LoadingContent";
 import { getThumbnail } from "../../uteis/data";
 import { Breadcrumb } from "../../components/Breadcrumb";
 import { ComicType } from "../../@types/ComicType";
+import { Wrapper } from "../../components/Wrapper";
 
 export const Comic: React.FC = () => {
   const [isLoading, setLoading] = useState(true);
@@ -41,7 +42,7 @@ export const Comic: React.FC = () => {
   }, []);
 
   return (
-    <>
+    <Wrapper>
       <Header />
       <Menu />
       <Main>
@@ -63,7 +64,7 @@ export const Comic: React.FC = () => {
             meanWhile={<LoadingContent />}
           >
             {comic && (
-              <div className="row g-5">
+              <div className="row row-cols-1 row-cols-sm-2 g-5">
                 <div className="col-5">
                   <img
                     className="img-fluid"
@@ -71,9 +72,40 @@ export const Comic: React.FC = () => {
                     alt={comic?.title}
                   />
                 </div>
-                <div className="col">
-                  <PageTitle title={comic?.title ?? "Loading..."} />
-                  <p>Description: {comic.diamondCode}</p>
+                <div className="col text-white">
+                  <div className="mb-3">
+                    <PageTitle title={comic?.title ?? "Loading..."} />
+                  </div>
+                  {comic.description && (
+                    <div className="mb-3">
+                      <span className="fw-bold">Description:</span>
+                      <span>{comic.description}</span>
+                    </div>
+                  )}
+                  {comic.modified && (
+                    <div className="mb-3">
+                      <span className="fw-bold me-1">Modified:</span>
+                      <span>{comic.modified}</span>
+                    </div>
+                  )}
+                  {comic.title && (
+                    <div className="mb-3">
+                      <span className="fw-bold me-1">Title:</span>
+                      <span>{comic.title}</span>
+                    </div>
+                  )}
+                  {comic.variantDescription && (
+                    <div className="mb-3">
+                      <span className="fw-bold me-1">Variant Description:</span>
+                      <span>{comic.variantDescription}</span>
+                    </div>
+                  )}
+                  {comic.diamondCode && (
+                    <div className="mb-3">
+                      <span className="fw-bold me-1">Diamond Code:</span>
+                      <span>{comic.diamondCode}</span>
+                    </div>
+                  )}
                 </div>
               </div>
             )}
@@ -81,6 +113,6 @@ export const Comic: React.FC = () => {
         </Container>
       </Main>
       <Footer />
-    </>
+    </Wrapper>
   );
 };

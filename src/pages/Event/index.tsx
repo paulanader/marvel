@@ -63,7 +63,7 @@ export const Event: React.FC = () => {
             meanWhile={<LoadingContent />}
           >
             {event && (
-              <div className="row g-5">
+              <div className="row row-cols-1 row-cols-sm-2 g-5">
                 <div className="col-5">
                   <img
                     className="img-fluid"
@@ -71,9 +71,28 @@ export const Event: React.FC = () => {
                     alt={event?.title}
                   />
                 </div>
-                <div className="col">
-                  <PageTitle title={event?.title ?? "Loading..."} />
-                  <p>Description: {event.description}</p>
+                <div className="col text-white">
+                  <div className="mb-3">
+                    <PageTitle title={event?.title ?? "Loading..."} />
+                  </div>
+                  {event.description && (
+                    <div className="mb-3">
+                      <span className="fw-bold">Description:</span>
+                      <span>{event.description}</span>
+                    </div>
+                  )}
+                  {event.modified && (
+                    <div className="mb-3">
+                      <span className="fw-bold me-1">Modified:</span>
+                      <span>{event.modified}</span>
+                    </div>
+                  )}
+                  {event.title && (
+                    <div className="mb-3">
+                      <span className="fw-bold me-1">title:</span>
+                      <span>{event.title}</span>
+                    </div>
+                  )}
                 </div>
               </div>
             )}

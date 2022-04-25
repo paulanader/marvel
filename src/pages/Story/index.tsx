@@ -15,6 +15,7 @@ import { Breadcrumb } from "../../components/Breadcrumb";
 import { StoryType } from "../../@types/StoryType";
 
 import marvelstories from "../../assets/marvelstories.png";
+import { Wrapper } from "../../components/Wrapper";
 
 export const Story: React.FC = () => {
   const [isLoading, setLoading] = useState(true);
@@ -42,7 +43,7 @@ export const Story: React.FC = () => {
   }, []);
 
   return (
-    <>
+    <Wrapper>
       <Header />
       <Menu />
       <Main>
@@ -64,7 +65,7 @@ export const Story: React.FC = () => {
             meanWhile={<LoadingContent />}
           >
             {story && (
-              <div className="row g-5">
+              <div className="row row-cols-1 row-cols-sm-2 g-5">
                 <div className="col-5">
                   <img
                     className="img-fluid"
@@ -72,9 +73,28 @@ export const Story: React.FC = () => {
                     alt={story?.title}
                   />
                 </div>
-                <div className="col">
-                  <PageTitle title={story?.title ?? "Loading..."} />
-                  <p>Description: {story.description}</p>
+                <div className="col text-white">
+                  <div className="mb-3">
+                    <PageTitle title={story?.title ?? "Loading..."} />
+                  </div>
+                  {story.description && (
+                    <div className="mb-3">
+                      <span className="fw-bold me-1">Description:</span>
+                      <span>{story.description}</span>
+                    </div>
+                  )}
+                  {story.modified && (
+                    <div className="mb-3">
+                      <span className="fw-bold me-1">Modified:</span>
+                      <span>{story.modified}</span>
+                    </div>
+                  )}
+                  {story.title && (
+                    <div className="mb-3">
+                      <span className="fw-bold me-1">Title:</span>
+                      <span>{story.title}</span>
+                    </div>
+                  )}
                 </div>
               </div>
             )}
@@ -82,6 +102,6 @@ export const Story: React.FC = () => {
         </Container>
       </Main>
       <Footer />
-    </>
+    </Wrapper>
   );
 };
