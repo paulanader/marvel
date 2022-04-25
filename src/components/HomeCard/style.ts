@@ -6,14 +6,13 @@ export const Base = styled.div`
   align-items: center;
   justify-content: space-between;
   font-size: 1rem;
-  color: var(--red);
-  background: var(--black);
-  border: 0;
+  border: none;
+  color: var(--white);
 
   padding: 0 2rem;
 
   a {
-    color: var(--black);
+    color: var(--white);
     text-decoration: none;
     font-weight: bold;
 
@@ -22,4 +21,9 @@ export const Base = styled.div`
       font-weight: bold;
     }
   }
+`;
+
+export const CardBody = styled.div`
+  color: var(--white);
+  background: var(--dark);
 `;

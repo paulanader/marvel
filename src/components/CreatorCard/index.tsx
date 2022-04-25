@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Div } from "./style";
+import { CardBody, Div } from "./style";
 
 interface ICardProps {
   title: string;
@@ -16,10 +16,10 @@ export const CreatorCard: React.FC<ICardProps> = ({
     <Link to={`/creators/${idroute}`}>
       <img className="card-img-top w-100" src={image} alt="Imagem" />
     </Link>
-    <div className="card-body d-flex">
+    <CardBody className="card-body d-flex">
       <h5 className="card-title mt-auto mb-0">
         <Link to={`/creators/${idroute}`}>{title}</Link>
       </h5>
-    </div>
+    </CardBody>
   </Div>
 );
