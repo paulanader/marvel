@@ -11,7 +11,7 @@ import { Link } from "react-router-dom";
 export function HomeCard() {
   return (
     <Base>
-      <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4 mb-5 p-3">
+      <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4 mb-5 p-3 w-100">
         <div className="col d-flex">
           <div className="card align-self-stretch">
             <Link to="/characters">
